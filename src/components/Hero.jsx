@@ -1,13 +1,47 @@
-import React, { useState } from 'react'
 import heroImage from "../assets/final.png";
 
 const Hero = () => {
   return (
-    <div className=' w-full mt-4 flex gap-4 h-full justify-center items-center border-b-1 border-gray-200'>
-        <h1 className='max-w-md text-5xl text-center font-bold'>AI-curated recipes, music, and movies. <br /> Based on your mood</h1>
-        <img className='w-1/2' src={heroImage} alt="" />
-    </div>
-  )
-}
+    <section className="w-full border-b border-gray-200">
+      <div
+        className="
+          max-w-7xl mx-auto
+          px-4 sm:px-6 lg:px-10
+          py-10 sm:py-10
+          flex flex-col-reverse
+          md:flex-row
+          items-center
+          gap-8
+        "
+      >
+        {/* Text */}
+        <h1
+          className="
+            text-center md:text-left
+            font-bold
+            text-3xl sm:text-4xl lg:text-5xl
+            max-w-xl
+            leading-tight
+          "
+        >
+          AI-curated recipes, music, and movies.
+          <br />
+          <span className="text-gray-700">
+            Based on your mood
+          </span>
+        </h1>
 
-export default Hero
+        {/* Image */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <img
+            src={heroImage}
+            alt="Mood-based AI recommendations illustration"
+            className="w-full max-w-md md:max-w-full object-contain"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
