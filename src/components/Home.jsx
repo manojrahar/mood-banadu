@@ -28,9 +28,13 @@ const Home = () => {
   function parseAiText(text) {
     const result = { food: "", music: "", movie: "" };
 
-    const foodMatch = text.match(/Food:\s*([\s\S]*?)\n\n/i);
-    const musicMatch = text.match(/Music:\s*([\s\S]*?)\n\n/i);
-    const movieMatch = text.match(/Movie:\s*([\s\S]*)$/i);
+    // Remove any markdown bold asterisks
+    const cleanText = text.replace(/\*\*/g, "");
+
+    // Use lookaheads to capture content between keywords flexibly
+    const foodMatch = cleanText.match(/Food:\s*([\s\S]*?)(?=Music:|$)/i);
+    const musicMatch = cleanText.match(/Music:\s*([\s\S]*?)(?=Movie:|$)/i);
+    const movieMatch = cleanText.match(/Movie:\s*([\s\S]*)$/i);
 
     if (foodMatch) result.food = foodMatch[1].trim();
     if (musicMatch) result.music = musicMatch[1].trim();
